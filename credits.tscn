@@ -1,0 +1,175 @@
+[gd_scene load_steps=19 format=3 uid="uid://b13n8vk7is1v"]
+
+[ext_resource type="Script" uid="uid://dljoibogcpit5" path="res://creditsm.gd" id="1_3mii5"]
+[ext_resource type="FontFile" uid="uid://bhannpl7p52jj" path="res://fonts/SuperFortrees.ttf" id="1_c1t8d"]
+[ext_resource type="AudioStream" uid="uid://co77uwqaka1ls" path="res://music/fesh.mp3" id="2_g4wvt"]
+[ext_resource type="Script" uid="uid://dbb1muwjlsc2l" path="res://creditsanim.gd" id="3_g4wvt"]
+[ext_resource type="Texture2D" uid="uid://c6wkcnv45ghf5" path="res://textures/fish_texture.png" id="4_h30m1"]
+[ext_resource type="ArrayMesh" uid="uid://der1y48c5lt1v" path="res://objs/fish.obj" id="5_3mii5"]
+[ext_resource type="Script" uid="uid://y6bkpwn7hkh5" path="res://spin.gd" id="6_r4875"]
+[ext_resource type="Texture2D" uid="uid://dlyqhwyhugg0u" path="res://textures/water.jpg" id="7_g735x"]
+[ext_resource type="Script" uid="uid://c38x616xc87tk" path="res://playanim.gd" id="8_lnt0k"]
+
+[sub_resource type="Animation" id="Animation_j6beo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 640)]
+}
+
+[sub_resource type="Animation" id="Animation_pjc1l"]
+resource_name = "credits"
+length = 57.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 57),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 640), Vector2(0, -2400)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4av4j"]
+_data = {
+&"RESET": SubResource("Animation_j6beo"),
+&"credits": SubResource("Animation_pjc1l")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_604bw"]
+albedo_texture = ExtResource("4_h30m1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0343s"]
+albedo_texture = ExtResource("7_g735x")
+
+[sub_resource type="QuadMesh" id="QuadMesh_eh8ii"]
+
+[sub_resource type="Animation" id="Animation_waa4j"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, -5.50431, -14)
+
+[sub_resource type="Animation" id="Animation_y4yjw"]
+resource_name = "anim"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, -5.50431, -14, 1.5, 1, 0, -14, -14, 3, 1, 0, -5.504, -14)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ok7cu"]
+_data = {
+&"RESET": SubResource("Animation_waa4j"),
+&"anim": SubResource("Animation_y4yjw")
+}
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3mii5")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.988
+anchor_bottom = 0.988
+offset_top = -0.223999
+offset_right = 1160.0
+offset_bottom = 2769.78
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_c1t8d")
+theme_override_font_sizes/font_size = 67
+text = "kryte.org
+2025
+=========
+fish with damn guns
+licensed under gpl v3
+========
+used assets:
+https://free3d.com/3d-model/3d-fish-model-low-poly-63627.html
+=
+https://www.flickr.com/photos/160066952@N07/45840842511/ (probably not origin)
+=
+OST - inteltoasters, MrPropper
+=
+https://www.myinstants.com/en/instant/explosionnn-73303 (not origin)
+=
+https://www.myinstants.com/en/instant/cartoon-slip-no-fall-82307/ (not origin)
+=
+https://www.deviantart.com/hhh316/art/Seamless-beach-sand-texture-269309044
+========
+main developer, ui designer:
+inteltoasters
+
+music producer:
+mrpropper, inteltoasters
+
+tester:
+dotqw
+
+========
+
+
+
+
+
+
+thanks for playing!"
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="Fesh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_g4wvt")
+autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4av4j")
+}
+script = ExtResource("3_g4wvt")
+
+[node name="Fish" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -5.307)
+material_override = SubResource("StandardMaterial3D_604bw")
+mesh = ExtResource("5_3mii5")
+script = ExtResource("6_r4875")
+
+[node name="bg" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 1, 0, -5.50431, -14)
+material_override = SubResource("StandardMaterial3D_0343s")
+mesh = SubResource("QuadMesh_eh8ii")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ok7cu")
+}
+script = ExtResource("8_lnt0k")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

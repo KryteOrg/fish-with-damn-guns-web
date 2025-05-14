@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://der1y48c5lt1v"
+path="res://.godot/imported/fish.obj-9c3a2399588f656288ce3f988e9c0a9c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/fish.obj-9c3a2399588f656288ce3f988e9c0a9c.mesh"]
+
+source_file="res://objs/fish.obj"
+dest_files=["res://.godot/imported/fish.obj-9c3a2399588f656288ce3f988e9c0a9c.mesh", "res://.godot/imported/fish.obj-9c3a2399588f656288ce3f988e9c0a9c.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
